@@ -1,0 +1,268 @@
+*, *::before, *::after {box-sizing: border-box;}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: rgb(187, 29, 55);
+}
+
+h1, h2, h3,
+h4, h5, h6,
+ul, html, body {
+    margin: 0;
+}
+
+html, body {
+  height: 100vh;
+  line-height: 1.5;
+  overflow: hidden;
+  font-family: 'Cormorant', serif;
+  background: rgb(233, 233, 233);
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+input,
+button,
+select {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: 'Vision', sans-serif;
+}
+
+input {
+    width: 100%;
+    padding: 0.5em 1em;
+}
+
+button {
+    color: #fff;
+    border-radius: 3px;
+    padding: 0.7em 1.5em;
+}
+
+.app {
+    width: 40%;
+    margin: auto;
+    height: 100%;
+    position: relative;
+}
+
+.app-description {
+    margin-top: 1em;
+}
+
+.todo-container {
+    padding: 1em;
+    margin-top: 2em;
+    transition: 0.25s;
+    background: #fff;
+    box-shadow: 0 20px 40px -32px rgba(0, 0, 0, 0.5);
+}
+
+form {
+    width: 80%;
+    margin: 1em auto;
+    border-bottom: 1px solid #ccc;
+}
+
+.todos {
+    overflow-y: auto;
+    max-height: 40vh;
+    transition: 0.25s;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.todos:not(:empty) {
+    padding: 1em;
+}
+
+.todos > * + * {
+    margin-top: 0.5em;
+}
+
+.todo {
+    padding: 1em;
+    display: flex;
+    transition: 0.5s;
+    background: #ccc;
+    border-radius: 5px;
+    align-items: center;
+    border-left: 4px solid rgb(187, 29, 55);
+    justify-content: space-between;
+}
+
+.todo.done {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.todo.delete {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.todo span {
+    flex: 1;
+    font-weight: bolder;
+    word-break: break-all;
+}
+
+.todo-actions,
+.todo-actions * + * {
+    margin-left: 1em;
+}
+
+.todo-done {
+    background: rgb(187, 29, 55);
+}
+
+.delete-todo {
+    background: #071e40;
+}
+
+.done-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.done-details * + * {
+    margin-top: 0.5em;
+}
+
+.todos:not(:empty) + .empty {
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    visibility: hidden;
+}
+
+.empty {
+    /* width: 80%; */
+    padding: 1em;
+    margin: auto;
+    color: #ccc;
+    font-size: 2em;
+    text-align: center;
+}
+
+/* .todos:empty ~ .actions {
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    visibility: hidden;
+} */
+
+.actions {
+    padding: 1em;
+    display: flex;
+    flex-shrink: 0;
+    transition: 0.25s;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.actions button,
+.actions select {
+    color: #fff;
+    background: #333;
+    border-radius: 3px;
+}
+
+.actions select {
+    padding: 0.5em 1em;
+}
+
+.modal {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    transition: 0.25s;
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal.open .modal-container {
+    transform: none;
+}
+
+.modal.ok .modal-container {
+    opacity: 0;
+    transform: scale(0.7);
+}
+
+.modal-container {
+    /* max-width: 30%; */
+    margin: auto;
+    transition: 0.25s;
+    background: #fff;
+    border-radius: 5px;
+    transform: scale(1.5);
+}
+
+.modal-content {
+    padding: 1.5em;
+    font-weight: bolder;
+}
+
+.modal-actions {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 1.5em;
+    color: #071e40;
+}
+
+.modal-actions * + * {
+    border-left: 1px solid #ccc;
+}
+
+@media (max-width: 600px) {
+    html,
+    body {
+        overflow: auto;
+    }
+
+    .app {
+        width: 100%;
+    }
+
+    .app-description {
+        padding: 0 2em;
+    }
+    
+    .todo-container {
+        box-shadow: none;
+    }
+
+    .todos {
+        overflow-x: unset;
+        overflow-y: unset;
+        max-height: max-content;
+    }
+
+    .actions {
+        bottom: 0;
+        position: sticky;
+        background: #fff;
+    }
+}
