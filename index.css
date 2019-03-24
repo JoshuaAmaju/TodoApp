@@ -8,6 +8,16 @@
     background: rgb(187, 29, 55);
 }
 
+@font-face {
+	font-family: 'Cormorant';
+	src: url('assets/CormorantGaramond-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Vision';
+	src: url('assets/Vision.ttf');
+}
+
 h1, h2, h3,
 h4, h5, h6,
 ul, html, body {
